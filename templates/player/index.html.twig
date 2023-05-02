@@ -41,6 +41,7 @@
         <div class="container">
             <div class="main-players">
             {% for key, player in players %}
+            <div>
                 <a href="#">Buy</a>
                 <a href="#">Shell</a>
                 <a href="{{ path('app_player_edit', {'id': player.id}) }}" class="player">
@@ -54,6 +55,7 @@
                         </div>
                     </div>
                 </a>
+                </div>
             {% else %}
                 <tr>
                     <td colspan="7">no records found</td>
