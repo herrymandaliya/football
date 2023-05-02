@@ -34,9 +34,9 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_player_index') }}">back to list</a>
+    {# <a href="{{ path('app_player_index') }}">back to list</a> #}
 
-    <a href="{{ path('app_player_edit', {'id': player.id}) }}">edit</a>
+    <a href="{{ path('app_player_edit', {'id': player.id}) }}" class="button player-btn">edit</a>
 
     {{ include('player/_delete_form.html.twig') }}
 {% endblock %}

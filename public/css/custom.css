@@ -1,4 +1,4 @@
-a.button:hover {
+a.button:hover,.del-btn:hover,.player-btn:hover {
     text-decoration: none;
     color: #fff;
     background-color: #405cf5;
@@ -12,11 +12,12 @@ a.button:hover {
     background-color: #ccc;
     margin-bottom: 20px;
     cursor: pointer;
+    text-transform: capitalize;
 }
 .player-btn {
     text-decoration: none;
     color: #fff;
-    font-size: 1.2rem;
+    font-size: 1rem;
     font-weight: 700;
     transition: 1s ease-in-out;
 }
@@ -26,7 +27,6 @@ a.button:hover {
     color: #fff;
     font-weight: 700;
     transition: 1s ease-in-out;
-    text-transform: capitalize;
     max-width: 75px;
     width: 100%;
     display: inline-flex;
@@ -39,4 +39,44 @@ a.button:hover {
 .edit-btn
 {
     background-color: #0095ff;
+}
+.team-btn
+{
+    background-color: ;
+}
+.del-btn
+{
+    background-color: #dc3545;
+    color: #fff;
+    transition: 1s ease-in-out;
+    padding: 5px 10p;
+    max-width: 86px;
+    width: 100%;
+    /* display: inline-flex; */
+    /* align-items: center; */
+    justify-content: center;
+    font-size: 17px;
+}
+
+.back-btn
+{
+    text-decoration: none;
+    color: #fff;
+    font-weight: 700;
+    transition: 1s ease-in-out;
+     display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #2ea44f;
+    white-space: nowrap;
+}
+.form-label
+{
+    padding-left: 0 !important;
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+.col-4
+{
+    width: 40% !important;
 }

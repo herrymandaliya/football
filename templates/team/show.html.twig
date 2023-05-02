@@ -3,7 +3,7 @@
 {% block title %}Team{% endblock %}
 
 {% block body %}
-    <h1>Team</h1>
+    <h1 class="mb-4">Team</h1>
 
     <table class="table">
         <tbody>
@@ -30,9 +30,9 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_team_index') }}">back to list</a>
+    {# <a href="{{ path('app_team_index') }}">back to list</a> #}
 
-    <a href="{{ path('app_team_edit', {'id': team.id}) }}">edit</a>
+    <a href="{{ path('app_team_edit', {'id': team.id}) }}" class="button edit-btn">edit</a>
 
     {{ include('team/_delete_form.html.twig') }}
 {% endblock %}
