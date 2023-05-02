@@ -1,85 +1,19 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Dashboard{% endblock %}
+{% block title %}Hello DashboardController!{% endblock %}
 
 {% block body %}
-<section class="Teams" style="background-image: url(images/teams-landingbg.jpg);">
-        <div class="container">
-            <div class="ipl">
-                <img src="images/teams-landing-logo.png" alt="teams-landing-logo">
-            </div>
-            <div class="main-teams">
-       {% for key,team in teams %}
-            <a class="csk" href="player.html">
-                <div class="csk-logo">
-                    <img src="{{ asset(team_dir ~ team.logo ) }}" alt="csk-logo">
-                </div>
-                <div class="heading">
-                    <h3>{{team.name}}</h3>
-                </div>
-            </a>
-        {% else %}
-            <tr>
-                <td colspan="6">no records found</td>
-            </tr>
-        {% endfor %}
-                {# <a class="csk dc" href="player.html">
-                    <div class="csk-logo dc-color">
-                        <img src="images/dcoutline.png" alt="dc-logo">
-                    </div>
-                    <div class="heading">
-                        <h3>Delhi Capitals</h3>
-                    </div>
-                </a>
-                <a class="csk" href="player.html">
-                    <div class="csk-logo gt-color">
-                        <img src="images/GToutline.png" alt="Gt-logo">
-                    </div>
-                    <div class="heading">
-                        <h3>Gujarat Titans</h3>
-                    </div>
-                </a>
-                <a class="csk kkr" href="player.html">
-                    <div class="csk-logo kkr-color">
-                        <img src="images/KKRoutline.png" alt="KkR-logo">
-                    </div>
-                    <div class="heading">
-                        <h3>Kolkata Knight Riders</h3>
-                    </div>
-                </a>
-                <a class="csk lsg" href="player.html">
-                    <div class="csk-logo lsg-color">
-                        <img src="images/LSGoutline.png" alt="lucknow-logo">
-                    </div>
-                    <div class="heading">
-                        <h3>Lucknow Super Giants</h3>
-                    </div>
-                </a>
-                <a class="csk mi" href="player.html">
-                    <div class="csk-logo mi-color">
-                        <img src="images/MIoutline.png" alt="Mi-logo">
-                    </div>
-                    <div class="heading">
-                        <h3>Mumbai Indians</h3>
-                    </div>
-                </a>
-                <a class="csk mi" href="player.html">
-                    <div class="csk-logo Pbks-color">
-                        <img src="images/PBKSoutline.png" alt="Pbks-logo">
-                    </div>
-                    <div class="heading">
-                        <h3>Punjab Kings</h3>
-                    </div>
-                </a>
-                <a class="csk mi" href="player.html">
-                    <div class="csk-logo RR-color">
-                        <img src="images/RRoutline.png" alt="RR-logo">
-                    </div>
-                    <div class="heading">
-                        <h3>Rajasthan Royals</h3>
-                    </div>
-                </a> #}
-            </div>
-        </div>
-    </section>
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+
+    This friendly message is coming from:
+    <ul>
+        <li>Your controller at <code><a href="{{ 'D:/wamp/www/football-team-app/src/Controller/DashboardController.php'|file_link(0) }}">src/Controller/DashboardController.php</a></code></li>
+        <li>Your template at <code><a href="{{ 'D:/wamp/www/football-team-app/templates/dashboard/index.html.twig'|file_link(0) }}">templates/dashboard/index.html.twig</a></code></li>
+    </ul>
+</div>
 {% endblock %}

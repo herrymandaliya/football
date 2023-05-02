@@ -3,15 +3,19 @@
 {% block title %}Team index{% endblock %}
 
 {% block body %}
-    <h1>Team index</h1>
 
+    <a href="{{ path('app_team_new') }}"class="button player-btn">Create new</a>
+   
+
+    <div>
+    <h1>Team</h1>
+</div>
     <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
                 <th>Name</th>
-                <th>Country</th>
-                
+                <th>Country</th>                
                 <th>Budget</th>
                 <th>actions</th>
             </tr>
@@ -24,8 +28,9 @@
                 <td>{{ team.country }}</td>
                 <td>{{ team.budget }}</td>
                 <td>
-                    <a href="{{ path('app_team_show', {'id': team.id}) }}">show</a>
-                    <a href="{{ path('app_team_edit', {'id': team.id}) }}">edit</a>
+             
+                    <a href="{{ path('app_team_show', {'id': team.id}) }}" class="button show-btn">show</a>
+                    <a href="{{ path('app_team_edit', {'id': team.id}) }}" class="button edit-btn">edit</a> 
                 </td>
             </tr>
         {% else %}
@@ -36,5 +41,4 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_team_new') }}">Create new</a>
 {% endblock %}
