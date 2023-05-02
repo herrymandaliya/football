@@ -1,22 +1,27 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
-{{ form_end(form) }}
-
-
-
-{{ form_start(form) }}
 {{ form_errors(form) }}
-<div class="mb-3">
-  <label class="form-label" for="project_cost">Project Name</label>
-  {{ form_row(form.name, {'attr': {'class': 'form-control'} , label: false })  }}
-</div>
-<div class="mb-3">
-  <label class="form-label" for="project_cost">Cost</label>
-  {{ form_row(form.cost, {'attr': {'class': 'form-control'} , label: false })  }}
+<div class="mb-3 col-4">
+  <label class="form-label" for="player_image">Player Image</label>
+  {{ form_row(form.image, {'attr': {'class': 'form-control'} , label: false })  }}
 </div>
 <div class="mb-3 col-4">
-  {{ form_row(form.start_date.month, {'attr': {'class': 'form-select'} , label: false })  }}
+  <label class="form-label" for="firstname">Firstname</label>
+  {{ form_row(form.firstname, {'attr': {'class': 'form-control'} , label: false })  }}
 </div>
-<button class="btn">{{ button_label|default('Save') }}</button>
+<div class="mb-3 col-4">
+  <label class="form-label" for="firstname">lastname</label>
+  {{ form_row(form.lastname, {'attr': {'class': 'form-control'} , label: false })  }}
+</div>
+<div class="mb-3 col-4">
+  <label class="form-label" for="firstname">expacted_price</label>
+  {{ form_row(form.expacted_price, {'attr': {'class': 'form-control'} , label: false })  }}
+</div>
+<div class="mb-4 col-4">
+  <label class="form-label" for="firstname">base_price</label>
+  {{ form_row(form.base_price, {'attr': {'class': 'form-control'} , label: false })  }}
+</div>
+<div class="mb-3 col-4">
+  {{ form_row(form.team, {'attr': {'class': 'form-select'} , label: false })  }}
+</div>
+<button class="btn player-btn">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}
