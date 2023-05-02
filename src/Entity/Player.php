@@ -14,7 +14,7 @@ class Player
     private ?int $id = null;
 
     #[ORM\ManyToOne]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: true)]
     private ?Team $team = null;
 
     #[ORM\Column(length: 500, nullable: true)]
@@ -31,6 +31,11 @@ class Player
 
     #[ORM\Column(nullable: true)]
     private ?int $base_price = null;
+
+    public function __toString()
+    {
+        return $this->getTeam();
+    }
 
     public function getId(): ?int
     {

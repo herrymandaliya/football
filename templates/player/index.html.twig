@@ -1,42 +1,71 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Player index{% endblock %}
+{% block title %}Player index
+{% endblock %}
 
 {% block body %}
-    <h1>Player index</h1>
+	<h1>Players</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Image</th>
-                <th>Firstname</th>
-                <th>Lastname</th>
-                <th>Expacted_price</th>
-                <th>Base_price</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for player in players %}
-            <tr>
-                <td>{{ player.id }}</td>
-                <td>{{ player.image }}</td>
-                <td>{{ player.firstname }}</td>
-                <td>{{ player.lastname }}</td>
-                <td>{{ player.expactedPrice }}</td>
-                <td>{{ player.basePrice }}</td>
-                <td>
-                    <a href="{{ path('app_player_show', {'id': player.id}) }}">show</a>
-                    <a href="{{ path('app_player_edit', {'id': player.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="7">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-    <a href="{{ path('app_player_new') }}" class="button player-btn">Create new</a>
+	{# <table class="table">
+	        <thead>
+	            <tr>
+	                <th>Id</th>
+	                <th>FirstName</th>
+	                <th>LastName</th>
+	                <th>Expacted Price</th>
+	                <th>Base Price</th>
+	                <th>Actions</th>
+	            </tr>
+	        </thead>
+	        <tbody>
+	        {% for key, player in players %}
+	            <tr>
+	                <td>{{ key+1}}</td>
+	                <td>{{ player.firstname }}</td>
+	                <td>{{ player.lastname }}</td>
+	                <td>{{ player.expactedPrice }}</td>
+	                <td>{{ player.basePrice }}</td>
+	                <td>
+	                    <a href="{{ path('app_player_show', {'id': player.id}) }}">show</a>
+	                    <a href="{{ path('app_player_edit', {'id': player.id}) }}">edit</a>
+	                </td>
+	            </tr>
+	        {% else %}
+	            <tr>
+	                <td colspan="7">no records found</td>
+	            </tr>
+	        {% endfor %}
+	        </tbody>
+	    </table> #}
+
+	<section class="Players">
+		<div class="container">
+			<div class="main-players">
+				{% for key, player in players %}
+					<div>
+						<a href="#">Buy</a>
+						<a href="#">Sell</a>
+						<a href="{{ path('app_player_edit', {'id': player.id}) }}" class="player">
+							<div class="img-player">
+								<img src="{{ asset(player_dir ~ player.image ) }}" alt="Player-img">
+							</div>
+
+							<div class="info-player">
+								<div class="name-player">
+									<h2>{{ player.firstname }}
+										{{ player.lastname }}</h2>
+								</div>
+							</div>
+						</a>
+					</div>
+				{% else %}
+					<tr>
+						<td colspan="7">no records found</td>
+					</tr>
+				{% endfor %}
+			</div>
+		</div>
+	</section>
+
+	<a href="{{ path('app_player_new') }}">Create new</a>
 {% endblock %}
