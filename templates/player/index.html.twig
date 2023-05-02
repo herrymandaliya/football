@@ -5,23 +5,21 @@
 {% block body %}
     <h1>Player index</h1>
 
-    <table class="table">
+    {# <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Image</th>
-                <th>Firstname</th>
-                <th>Lastname</th>
-                <th>Expacted_price</th>
-                <th>Base_price</th>
-                <th>actions</th>
+                <th>FirstName</th>
+                <th>LastName</th>
+                <th>Expacted Price</th>
+                <th>Base Price</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
-        {% for player in players %}
+        {% for key, player in players %}
             <tr>
-                <td>{{ player.id }}</td>
-                <td>{{ player.image }}</td>
+                <td>{{ key+1}}</td>
                 <td>{{ player.firstname }}</td>
                 <td>{{ player.lastname }}</td>
                 <td>{{ player.expactedPrice }}</td>
@@ -37,7 +35,118 @@
             </tr>
         {% endfor %}
         </tbody>
-    </table>
+    </table> #}
+
+     <section class="Players">
+        <div class="container">
+            <div class="main-players">
+            {% for key, player in players %}
+                <a href="#">Buy</a>
+                <a href="#">Shell</a>
+                <a href="{{ path('app_player_edit', {'id': player.id}) }}" class="player">
+                    <div class="img-player">
+                        <img src="{{ asset(player_dir ~ player.image ) }}" alt="Player-img">
+                    </div>
+
+                    <div class="info-player">
+                        <div class="name-player">
+                            <h2>{{ player.firstname }} {{ player.lastname }}</h2>
+                        </div>
+                    </div>
+                </a>
+            {% else %}
+                <tr>
+                    <td colspan="7">no records found</td>
+                </tr>
+            {% endfor %}
+                {# <a href="player-detail.html" class="player">
+                    <div class="batter-player">
+                        <img src="images/batsman-icon.svg" alt="bat-img">
+                    </div>
+                    <div class="img-player">
+                        <img src="images/batter1-img.png" alt="Player-img">
+                    </div>
+                    <div class="info-player">
+                        <div class="name-player">
+                            <h2>Devon Conway</h2>
+                            <span>Batter</span>
+                        </div>
+                    </div>
+                </a>
+                <a href="player-detail.html" class="player">
+                    <div class="batter-player">
+                        <img src="images/batsman-icon.svg" alt="bat-img">
+                    </div>
+                    <div class="img-player">
+                        <img src="images/opener.png" alt="Player-img">
+                    </div>
+                    <div class="info-player">
+                        <div class="name-player">
+                            <h2>Ruturaj Gaikwad</h2>
+                            <span>Batter</span>
+                        </div>
+                    </div>
+                </a>
+                <a href="player-detail.html" class="player">
+                    <div class="batter-player">
+                        <img src="images/batsman-icon.svg" alt="bat-img">
+                    </div>
+                    <div class="img-player">
+                        <img src="images/Middleorder-img.png" alt="Player-img">
+                    </div>
+                    <div class="info-player">
+                        <div class="name-player">
+                            <h2>Ajay Mandal</h2>
+                            <span>Batter</span>
+                        </div>
+                    </div>
+                </a>
+                <a href="player-detail.html" class="player">
+                    <div class="batter-player">
+                        <img src="images/batsman-icon.svg" alt="bat-img">
+                    </div>
+                    <div class="img-player">
+                        <img src="images/finisher-img.png" alt="Player-img">
+                    </div>
+                    <div class="info-player">
+                        <div class="name-player">
+                            <h2>Ambati Rayudu</h2>
+                            <span>Batter</span>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="player-detail.html" class="player">
+                    <div class="batter-player">
+                        <img src="images/batsman-icon.svg" alt="bat-img">
+                    </div>
+                    <div class="img-player">
+                        <img src="images/lowermid-bat.png" alt="lowermidbat-img">
+                    </div>
+                    <div class="info-player">
+                        <div class="name-player">
+                            <h2>Ajinkya Rahane</h2>
+                            <span>Batter</span>
+                        </div>
+                    </div>
+                </a>
+                <a href="player-detail.html" class="player">
+                    <div class="batter-player">
+                        <img src="images/batsman-icon.svg" alt="bat-img">
+                    </div>
+                    <div class="img-player">
+                        <img src="images/impactplayer-img.png" alt="Player-img">
+                    </div>
+                    <div class="info-player">
+                        <div class="name-player">
+                            <h2>Shaik Rasheed</h2>
+                            <span>Batter</span>
+                        </div>
+                    </div>
+                </a> #}
+            </div>
+        </div>
+    </section>
 
     <a href="{{ path('app_player_new') }}">Create new</a>
 {% endblock %}
