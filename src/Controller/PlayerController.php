@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Doctrine\Persistence\ManagerRegistry as PersistenceManagerRegistry;
 
 #[Route('/player')]
 class PlayerController extends AbstractController
@@ -22,17 +23,37 @@ class PlayerController extends AbstractController
     }
 
     #[Route('/new', name: 'app_player_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, PlayerRepository $playerRepository): Response
+    public function new(Request $request, PlayerRepository $playerRepository, PersistenceManagerRegistry $doctrine
+    ): Response
     {
         $player = new Player();
         $form = $this->createForm(PlayerType::class, $player);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $playerRepository->save($player, true);
+        if($form->isSubmitted()){
+            //Entity Manager 
+            $em = $doctrine->getManager();
+            
+            $image = $request->files->get('player')['image'];
 
+            if($image){
+                $dateiname = md5(uniqid()) . '.' . $image->guessClientExtension();
+            }
+
+            $image->move(
+                $this->getParameter('players'),
+                $dateiname
+            );
+
+            $player->setImage($dateiname);
+
+            $em->persist($player);
+            $em->flush();
+
+            // return $this->redirect($this->generateUrl('app_player_index'));
             return $this->redirectToRoute('app_player_index', [], Response::HTTP_SEE_OTHER);
         }
+
 
         return $this->renderForm('player/new.html.twig', [
             'player' => $player,

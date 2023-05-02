@@ -39,6 +39,7 @@ class Player
 
     public function getTeam(): ?Team
     {
+        // dd($this->team);
         return $this->team;
     }
 
