@@ -50,7 +50,6 @@ class PlayerController extends AbstractController
             $em->persist($player);
             $em->flush();
 
-            // return $this->redirect($this->generateUrl('app_player_index'));
             return $this->redirectToRoute('app_player_index', [], Response::HTTP_SEE_OTHER);
         }
 
