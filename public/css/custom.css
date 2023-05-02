@@ -1,0 +1,42 @@
+a.button:hover {
+    text-decoration: none;
+    color: #fff;
+    background-color: #405cf5;
+}
+.button{
+    display: inline-flex;
+    border: 1px solid #ccc;
+    padding: 5px 15px;
+    align-items: center;
+    border-radius: 12px;
+    background-color: #ccc;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+.player-btn {
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: 700;
+    transition: 1s ease-in-out;
+}
+
+.show-btn,.edit-btn {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 700;
+    transition: 1s ease-in-out;
+    text-transform: capitalize;
+    max-width: 75px;
+    width: 100%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #2ea44f;
+    white-space: nowrap;
+}
+
+.edit-btn
+{
+    background-color: #0095ff;
+}
