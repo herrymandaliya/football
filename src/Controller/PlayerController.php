@@ -70,16 +70,35 @@ class PlayerController extends AbstractController
     }
 
     #[Route('/{id}/edit', name: 'app_player_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Player $player, PlayerRepository $playerRepository): Response
+    public function edit(Request $request, Player $player, PlayerRepository $playerRepository, PersistenceManagerRegistry $doctrine): Response
     {
         $form = $this->createForm(PlayerType::class, $player);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $playerRepository->save($player, true);
+        if($form->isSubmitted()){
+            //Entity Manager 
+            $em = $doctrine->getManager();
+            
+            $image = $request->files->get('player')['image'];
 
+            if($image){
+                $dateiname = md5(uniqid()) . '.' . $image->guessClientExtension();
+            }
+
+            $image->move(
+                $this->getParameter('players'),
+                $dateiname
+            );
+
+            $player->setImage($dateiname);
+
+            $em->persist($player);
+            $em->flush();
+
+            // return $this->redirect($this->generateUrl('app_player_index'));
             return $this->redirectToRoute('app_player_index', [], Response::HTTP_SEE_OTHER);
         }
+
 
         return $this->renderForm('player/edit.html.twig', [
             'player' => $player,
