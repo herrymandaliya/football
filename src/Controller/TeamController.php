@@ -93,7 +93,10 @@ class TeamController extends AbstractController
     public function delete(Request $request, Team $team, TeamRepository $teamRepository): Response
     {
         if ($this->isCsrfTokenValid('delete'.$team->getId(), $request->request->get('_token'))) {
-            $teamRepository->remove($team, true);
+            try {
+                $teamRepository->remove($team, true);
+            } catch (\Doctrine\DBAL\Exception\ForeignKeyConstraintViolationException $th) {
+            }
         }
 
         return $this->redirectToRoute('app_team_index', [], Response::HTTP_SEE_OTHER);
