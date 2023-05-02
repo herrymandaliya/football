@@ -5,10 +5,12 @@ namespace App\Controller;
 use App\Entity\Team;
 use App\Form\TeamType;
 use App\Repository\TeamRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Doctrine\Persistence\ManagerRegistry as PersistenceManagerRegistry;
 
 #[Route('/team')]
 class TeamController extends AbstractController
@@ -22,14 +24,35 @@ class TeamController extends AbstractController
     }
 
     #[Route('/new', name: 'app_team_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, TeamRepository $teamRepository): Response
+    public function new(Request $request ,PersistenceManagerRegistry $doctrine): Response
     {
         $team = new Team();
         $form = $this->createForm(TeamType::class, $team);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $teamRepository->save($team, true);
+
+            // print "<pre>";
+            // print_r($this);
+            // print "</pre>";die();
+
+            $entityManager = $doctrine->getManager();
+                
+            $image = $request->files->get('team')['logo'];
+
+            if($image){
+                $dateiname = md5(uniqid()) . '.' . $image->guessClientExtension();
+            }
+
+            $image->move(
+                $this->getParameter('teams'),
+                $dateiname
+            );
+           
+            $team->setLogo($dateiname);
+
+            $entityManager->persist($team);
+            $entityManager->flush();
 
             return $this->redirectToRoute('app_team_index', [], Response::HTTP_SEE_OTHER);
         }
