@@ -32,10 +32,6 @@ class TeamController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            // print "<pre>";
-            // print_r($this);
-            // print "</pre>";die();
-
             $entityManager = $doctrine->getManager();
                 
             $image = $request->files->get('team')['logo'];
@@ -72,13 +68,31 @@ class TeamController extends AbstractController
     }
 
     #[Route('/{id}/edit', name: 'app_team_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Team $team, TeamRepository $teamRepository): Response
+    public function edit(Request $request, Team $team, TeamRepository $teamRepository, PersistenceManagerRegistry $doctrine): Response
     {
         $form = $this->createForm(TeamType::class, $team);
         $form->handleRequest($request);
 
+        
         if ($form->isSubmitted() && $form->isValid()) {
-            $teamRepository->save($team, true);
+
+            $entityManager = $doctrine->getManager();
+                
+            $image = $request->files->get('team')['logo'];
+
+            if($image){
+                $dateiname = md5(uniqid()) . '.' . $image->guessClientExtension();
+            }
+
+            $image->move(
+                $this->getParameter('teams'),
+                $dateiname
+            );
+           
+            $team->setLogo($dateiname);
+
+            $entityManager->persist($team);
+            $entityManager->flush();
 
             return $this->redirectToRoute('app_team_index', [], Response::HTTP_SEE_OTHER);
         }
