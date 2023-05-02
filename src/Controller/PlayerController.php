@@ -23,7 +23,7 @@ class PlayerController extends AbstractController
     }
 
     #[Route('/new', name: 'app_player_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, PlayerRepository $playerRepository, PersistenceManagerRegistry $doctrine
+    public function new(Request $request, PersistenceManagerRegistry $doctrine
     ): Response
     {
         $player = new Player();
