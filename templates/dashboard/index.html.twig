@@ -5,24 +5,24 @@
 {% block body %}
 <section class="Teams" style="background-image: url(images/teams-landingbg.jpg);">
         <div class="container">
-            <div class="ipl">
-                <img src="images/teams-landing-logo.png" alt="teams-landing-logo">
-            </div>
-            <div class="main-teams">
-       {% for key,team in teams %}
-            <a class="csk" href="player.html">
-                <div class="csk-logo">
-                    <img src="{{ asset(team_dir ~ team.logo ) }}" alt="csk-logo">
+{% if teams|length > 0 %}
+
+            <div class="team-block">
+                {% for key,team in teams %}
+                <div class="team-data">
+
+                        <a class="csk" href="#">
+                            <div class="team-player">
+                                <img src="{{ asset(team_dir ~ team.logo ) }}" alt="csk-logo">
+                            </div>
+                            <div class="team-txt">
+                                <h3>{{team.name}}</h3>
+                            </div>
+                        </a>
                 </div>
-                <div class="heading">
-                    <h3>{{team.name}}</h3>
-                </div>
-            </a>
-        {% else %}
-            <tr>
-                <td colspan="6">no records found</td>
-            </tr>
-        {% endfor %}
+
+                    {% endfor %}
+                {% endif %}
             </div>
         </div>
     </section>
