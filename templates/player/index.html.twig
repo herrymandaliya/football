@@ -6,45 +6,16 @@
 {% block body %}
 	<h1>Players</h1>
 
-	{# <table class="table">
-	        <thead>
-	            <tr>
-	                <th>Id</th>
-	                <th>FirstName</th>
-	                <th>LastName</th>
-	                <th>Expacted Price</th>
-	                <th>Base Price</th>
-	                <th>Actions</th>
-	            </tr>
-	        </thead>
-	        <tbody>
-	        {% for key, player in players %}
-	            <tr>
-	                <td>{{ key+1}}</td>
-	                <td>{{ player.firstname }}</td>
-	                <td>{{ player.lastname }}</td>
-	                <td>{{ player.expactedPrice }}</td>
-	                <td>{{ player.basePrice }}</td>
-	                <td>
-	                    <a href="{{ path('app_player_show', {'id': player.id}) }}">show</a>
-	                    <a href="{{ path('app_player_edit', {'id': player.id}) }}">edit</a>
-	                </td>
-	            </tr>
-	        {% else %}
-	            <tr>
-	                <td colspan="7">no records found</td>
-	            </tr>
-	        {% endfor %}
-	        </tbody>
-	    </table> #}
 
 	<section class="Players">
 		<div class="container">
-			<div class="main-players">
+       
+			<div class="main-players">           
 				{% for key, player in players %}
-					<div>
-						<a href="#">Buy</a>
-						<a href="#">Sell</a>
+					<div class="hero-player-block">	
+                    <div class="center">
+                      <a href="#" class="button show-btn mt-2 mb-2">Buy</a>
+		                <a href="#" class="button edit-btn mt-2 mb-2">Sell</a> </div>			
 						<a href="{{ path('app_player_edit', {'id': player.id}) }}" class="player">
 							<div class="img-player">
 								<img src="{{ asset(player_dir ~ player.image ) }}" alt="Player-img">
@@ -67,5 +38,5 @@
 		</div>
 	</section>
 
-	<a href="{{ path('app_player_new') }}">Create new</a>
+	<a href="{{ path('app_player_new') }}" class="button player-btn">Create new</a>
 {% endblock %}
