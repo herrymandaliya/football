@@ -14,8 +14,13 @@
 				{% for key, player in players %}
 					<div class="hero-player-block">	
                     <div class="center">
-                      <a href="{{ path('app_player_addtoteam', {'id': player.id}) }}" class="button show-btn mt-2 mb-2">Add to Team</a>
-		                <a href="#" class="button edit-btn mt-2 mb-2">Change Team</a> </div>			
+										
+											{% if player.team is null  %}
+													<a href="{{ path('app_player_addtoteam', {'id': player.id}) }}" class="button show-btn mt-2 mb-2">Add to Team</a>
+											{% else %}	
+													<a href="{{ path('app_player_addtoteam', {'id': player.id}) }}" class="button edit-btn mt-2 mb-2">Change Team</a>
+											{% endif %}	
+										 </div>		
 						<a href="{{ path('app_player_edit', {'id': player.id}) }}" class="player">
 							<div class="img-player">
 								<img src="{{ asset(player_dir ~ player.image ) }}" alt="Player-img">

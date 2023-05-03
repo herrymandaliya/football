@@ -106,7 +106,6 @@ class PlayerController extends AbstractController
             return $this->redirectToRoute('app_player_index', [], Response::HTTP_SEE_OTHER);
         }
 
-
         return $this->renderForm('player/edit.html.twig', [
             'player' => $player,
             'form' => $form,
@@ -124,6 +123,8 @@ class PlayerController extends AbstractController
             // $yourEntity = $this->entityManager->find(YourEntity::class, $id);
             // dd($request->get('player'));
             $player = $request->get('player');
+
+            
         // $team = $player['team'];
 
             // dd($team);
