@@ -3,27 +3,28 @@
 {% block title %}Dashboard{% endblock %}
 
 {% block body %}
+<h1>Teams</h1>
+
 <section class="Teams" style="background-image: url(images/teams-landingbg.jpg);">
-        <div class="container">
-{% if teams|length > 0 %}
+<div class="container">
+    {% if teams|length > 0 %}
 
-            <div class="team-block">
-                {% for key,team in teams %}
+        <div class="team-block">
+            {% for key,team in teams %}
                 <div class="team-data">
-
-                        <a class="csk" href="{{ path('app_team_edit', {'id': team.id}) }}">
-                            <div class="team-player">
-                                <img src="{{ asset(team_dir ~ team.logo ) }}" alt="csk-logo">
-                            </div>
-                            <div class="team-txt">
-                                <h3>{{team.name}}</h3>
-                            </div>
-                        </a>
+                    <a class="csk" href="{{ path('team_details', {'id': team.id}) }}">
+                        <div class="team-player">
+                            <img src="{{ asset(team_dir ~ team.logo ) }}" alt="csk-logo">
+                        </div>
+                        <div class="team-txt">
+                            <h3>{{team.name}}</h3>
+                        </div>
+                    </a>
                 </div>
+            {% endfor %}       
+        </div>         
+    {% endif %}
 
-                    {% endfor %}
-                {% endif %}
-            </div>
-        </div>
+</div>
     </section>
 {% endblock %}
