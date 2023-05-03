@@ -21,9 +21,13 @@
                         </div>
                     </a>
                 </div>
-            {% endfor %}       
-        </div>         
-    {% endif %}
+            {% endfor %}     
+        </div> 
+    {% else %}
+        <tr>
+            <td colspan="7">no records found</td>
+        </tr>
+    {% endif %}   
 
 </div>
     </section>

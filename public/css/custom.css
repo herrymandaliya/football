@@ -83,6 +83,7 @@ a.button:hover,.del-btn:hover,.player-btn:hover {
  .main-players
 {
     display: flex;    
+    flex-wrap: wrap;
     gap: 30px;  
    
 } 
@@ -95,8 +96,8 @@ a.button:hover,.del-btn:hover,.player-btn:hover {
 {
     border: 1px solid black;
     border-radius: 12px;
-    max-width: 300px;
-    width: 70%;
+    max-width: 30%;
+    width: 100%;
 } 
 .img-player
 {
@@ -127,13 +128,14 @@ a.button:hover,.del-btn:hover,.player-btn:hover {
 }
 .team-block {
     display: flex;
+    flex-wrap: wrap;
     gap: 30px;
 }
 .team-data
 {
   border: 1px solid #ccc;
     border-radius: 15px;
-    max-width: 300px;
+    max-width: 30%;
     width: 100%;
 }
 .team-txt

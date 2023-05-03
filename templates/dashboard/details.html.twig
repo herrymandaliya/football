@@ -13,10 +13,10 @@
       {% for key,teamPlayer in teamPlayers %}
         <div class="hero-player-block">	
           <div class="center">
-              {% if player.team is null  %}
-                  <a href="{{ path('app_player_addtoteam', {'id': player.id}) }}" class="button show-btn mt-2 mb-2">Add to Team</a>
+              {% if teamPlayer.team is null  %}
+                  <a href="{{ path('app_player_addtoteam', {'id': teamPlayer.id}) }}" class="button show-btn mt-2 mb-2">Add to Team</a>
               {% else %}	
-                  <a href="{{ path('app_player_addtoteam', {'id': player.id}) }}" class="button edit-btn mt-2 mb-2">Change Team</a>
+                  <a href="{{ path('app_player_addtoteam', {'id': teamPlayer.id}) }}" class="button edit-btn mt-2 mb-2">Change Team</a>
               {% endif %}	
           </div>			
           <a href="{{ path('app_player_edit', {'id': teamPlayer.id}) }}" class="player">

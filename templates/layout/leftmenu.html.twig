@@ -13,13 +13,35 @@
               
               <li class="nav-item">
                 <div class="nav-item-wrapper"><a class="nav-link label-1" href="{{path('app_dashboard')}}" role="button" data-bs-toggle="" aria-expanded="false">
-                    <div class="d-flex align-items-center"><span class="nav-link-icon"><span class="fa-brands fa-gulp fs-0 ms-1 me-1"></span></span><span class="nav-link-text-wrapper"><span class="nav-link-text">Dashboard</span></span></div>
+                    <div class="d-flex align-items-center">
+                      <span class="nav-link-icon">
+                          <span class=""><i class="fa-solid fa-gauge-high"></i> </span>
+                      </span>
+                      <span class="nav-link-text-wrapper">
+                          <span class="nav-link-text">Dashboard</span>
+                      </span>
+                    </div>
                   </a></div><!-- parent pages-->
                 <div class="nav-item-wrapper"><a class="nav-link label-1" href="{{path('app_team_index')}}" role="button" data-bs-toggle="" aria-expanded="false">
-                    <div class="d-flex align-items-center"><span class="nav-link-icon"><span data-feather="figma"></span></span><span class="nav-link-text-wrapper"><span class="nav-link-text">Team</span></span></div>
-                  </a></div><!-- parent pages-->
+                    <div class="d-flex align-items-center">
+                      <span class="nav-link-icon">
+                          <span class=""><i class="fa-solid fa-people-group"></i> </span>
+                      </span>
+                      <span class="nav-link-text-wrapper">
+                        <span class="nav-link-text">Team</span>
+                      </span>
+                    </div>
+                  </a>
+                </div><!-- parent pages-->
                 <div class="nav-item-wrapper"><a class="nav-link label-1" href="{{path('app_player_index')}}" role="button" data-bs-toggle="" aria-expanded="false">
-                    <div class="d-flex align-items-center"><span class="nav-link-icon"><span data-feather="git-merge"></span></span><span class="nav-link-text-wrapper"><span class="nav-link-text">Player</span></span></div>
+                    <div class="d-flex align-items-center">
+                    <span class="nav-link-icon">
+                       <i class="fa-solid fa-user"></i>
+                    </span>
+                    <span class="nav-link-text-wrapper">
+                        <span class="nav-link-text">Player</span>
+                    </span>
+                    </div>
                   </a></div><!-- parent pages-->
               </li>
             </ul>
@@ -45,7 +67,7 @@
            
             <li class="nav-item dropdown"><a class="nav-link lh-1 pe-0" id="navbarDropdownUser" href="#!" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-haspopup="true" aria-expanded="false">
                 <div class="avatar avatar-l ">
-                  <img class="rounded-circle " src="{{ asset('img/team/57.webp') }}" alt="" />
+                  <img class="rounded-circle " src="{{ asset('img/icons/avatar.webp') }}" alt="" />
                 </div>
               </a>
               <div class="dropdown-menu dropdown-menu-end navbar-dropdown-caret py-0 dropdown-profile shadow border border-300" aria-labelledby="navbarDropdownUser">

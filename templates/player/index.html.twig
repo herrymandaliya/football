@@ -4,9 +4,9 @@
 {% endblock %}
 
 {% block body %}
-	<h1>Players</h1>
+	<h1 class="mb-4">Players</h1>
 
-
+<a href="{{ path('app_player_new') }}" class="button player-btn">Create new</a>
 	<section class="Players">
 		<div class="container">
        
@@ -43,5 +43,5 @@
 		</div>
 	</section>
 
-	<a href="{{ path('app_player_new') }}" class="button player-btn">Create new</a>
+	
 {% endblock %}

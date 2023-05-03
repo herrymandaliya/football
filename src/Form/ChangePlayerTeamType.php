@@ -17,7 +17,9 @@ class ChangePlayerTeamType extends AbstractType
             ->add('team', EntityType::class, array(
                 'class' => Team::class,
                 'required' => false,
-            ));
+            ))->add('expacted_price')
+            ->add('base_price');
+            
     }
 
     public function configureOptions(OptionsResolver $resolver): void
