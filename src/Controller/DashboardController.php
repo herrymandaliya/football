@@ -21,10 +21,9 @@ class DashboardController extends AbstractController
         ]);
     }
 
-    #[Route('team/{id}', name: 'team_details', methods: ['GET'])]
+    #[Route('dash_team/{id}', name: 'team_details', methods: ['GET'])]
     public function show(Team $team ,int $id ,PlayerRepository $playerRepository): Response
     {
-        
         $teamPlayers = $playerRepository->findPlayersByTeamId($id);
        
         return $this->render('dashboard/details.html.twig', [

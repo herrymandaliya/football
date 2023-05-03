@@ -24,7 +24,6 @@ class TeamController extends AbstractController
         ]);
     }
 
-    
     #[Route('/new', name: 'app_team_new', methods: ['GET', 'POST'])]
     public function new(Request $request ,PersistenceManagerRegistry $doctrine): Response
     {
