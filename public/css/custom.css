@@ -27,7 +27,7 @@ a.button:hover,.del-btn:hover,.player-btn:hover {
     color: #fff;
     font-weight: 700;
     transition: 1s ease-in-out;
-    max-width: 75px;
+    max-width: 45%;
     width: 100%;
     display: inline-flex;
     align-items: center;

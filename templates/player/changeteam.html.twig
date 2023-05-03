@@ -1,0 +1,9 @@
+{{ form_start(form) }}
+{{ form_errors(form) }}
+
+<div class="mb-3 col-4">
+  <label class="form-label" for="firstname">Change Team</label>
+  {{ form_row(form.team, {'attr': {'class': 'form-select'} , label: false })  }}
+</div>
+<button class="button player-btn">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}

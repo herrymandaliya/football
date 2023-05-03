@@ -10,10 +10,18 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\Persistence\ManagerRegistry as PersistenceManagerRegistry;
+use Doctrine\ORM\EntityManagerInterface;
 
 #[Route('/player')]
 class PlayerController extends AbstractController
 {
+    private $entityManager;
+
+    public function __construct(EntityManagerInterface $entityManager)
+    {
+        $this->entityManager = $entityManager;
+    }
+
     #[Route('/', name: 'app_player_index', methods: ['GET'])]
     public function index(PlayerRepository $playerRepository): Response
     {
@@ -104,6 +112,34 @@ class PlayerController extends AbstractController
             'form' => $form,
         ]);
     }
+
+    #[Route('/{id}/addtoteam', name: 'app_player_addtoteam', methods: ['GET', 'POST'])]
+    public function addToTeam(Request $request, Player $player, PlayerRepository $playerRepository, PersistenceManagerRegistry $doctrine): Response
+    {
+        $form = $this->createForm(PlayerType::class, $player);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            // $yourEntity = $this->entityManager->find(YourEntity::class, $id);
+            // dd($request->get('player'));
+            $player = $request->get('player');
+        // $team = $player['team'];
+
+            // dd($team);
+            // $player->setTeam($newValue);
+
+
+            $playerRepository->save($player, true);
+            return $this->redirectToRoute('app_player_index', [], Response::HTTP_SEE_OTHER);
+        }
+
+        return $this->renderForm('player/addtoteam.html.twig', [
+            'player' => $player,
+            'form' => $form,
+        ]);
+    }
+
 
     #[Route('/{id}', name: 'app_player_delete', methods: ['POST'])]
     public function delete(Request $request, Player $player, PlayerRepository $playerRepository): Response
