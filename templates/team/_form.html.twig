@@ -1,5 +1,6 @@
 {{ form_start(form) }}
 {{ form_errors(form) }}
+
 <div class="mb-3 col-4">
   <label class="form-label" for="team_name">Team Name</label>
   {{ form_row(form.name, {'attr': {'class': 'form-control'} , label: false })  }}
@@ -14,5 +15,6 @@
 <div class="mb-3 col-4">
   {{ form_row(form.budget, {'attr': {'class': 'form-control'} , label: false })  }}
 </div>
+
 <button class="button player-btn">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}

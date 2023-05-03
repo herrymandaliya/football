@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Team;
 use App\Form\TeamType;
+use App\Repository\PlayerRepository;
 use App\Repository\TeamRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -60,11 +61,14 @@ class TeamController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_team_show', methods: ['GET'])]
-    public function show(Team $team): Response
+    public function show(Team $team ,int $id ,PlayerRepository $playerRepository): Response
     {
         
+        $teamPlayers = $playerRepository->findPlayersByTeamId($id);
+       
         return $this->render('team/show.html.twig', [
             'team' => $team,
+            'teamPlayers'=>$teamPlayers
         ]);
     }
 

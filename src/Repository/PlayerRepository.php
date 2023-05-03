@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Player;
+use App\Entity\Team;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -37,6 +38,16 @@ class PlayerRepository extends ServiceEntityRepository
         if ($flush) {
             $this->getEntityManager()->flush();
         }
+    }
+
+    public function findPlayersByTeamId(int $teamId): array
+    {
+        $qb = $this->createQueryBuilder('p')
+            ->innerJoin(Team::class, 't', 'WITH', 'p.team = t.id')
+            ->where('t.id = :teamId')
+            ->setParameter('teamId', $teamId);
+
+        return $qb->getQuery()->getResult();
     }
 
 //    /**

@@ -11,7 +11,7 @@
                 {% for key,team in teams %}
                 <div class="team-data">
 
-                        <a class="csk" href="#">
+                        <a class="csk" href="{{ path('app_team_edit', {'id': team.id}) }}">
                             <div class="team-player">
                                 <img src="{{ asset(team_dir ~ team.logo ) }}" alt="csk-logo">
                             </div>
